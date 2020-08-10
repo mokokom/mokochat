@@ -36,7 +36,7 @@ class ChatroomsController < ApplicationController
 			@chatroom = Chatroom.find(params[:id])
 			render :index
 		end
-		@messages = Message.all
+		@messages = Message.custom_display
 	end
 
 	def destroy
