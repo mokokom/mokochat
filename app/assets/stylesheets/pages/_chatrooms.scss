@@ -62,3 +62,8 @@
 .plus {
 	cursor: pointer;
 }
+
+#vertical-menu-container > div > div:nth-child(2),
+#vertical-menu-container > div > div:nth-child(3) {
+	max-width: 150px;
+}
