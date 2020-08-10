@@ -1,4 +1,10 @@
 @import "semantic-ui";
 
+@import "config/colors";
 @import "components/index";
 @import "pages/index";
+
+body {
+	background-color: $black;
+	color: $secondary;
+}

@@ -4,18 +4,26 @@
 			<i class="large circular comments outline icon"></i> Chatroom
 		</a>
 		<div class="right menu">
+			<div class="ui dropdown item mobile only">
+      Language <i class="dropdown icon"></i>
+      <div class="menu">
+        <a class="item">English</a>
+        <a class="item">Russian</a>
+        <a class="item">Spanish</a>
+      </div>
+    </div>
 			<div class="item">
 				<% if current_user %>
-					<%= link_to current_user.username, chatrooms_path, class: "ui primary button" %>
+					<%= link_to current_user.username, chatrooms_path, class: "ui black button" %>
 				<% else %>
-					<%= link_to "register", new_user_path, class: "ui primary button" %>
+					<%= link_to "register", new_user_path, class: "ui black button" %>
 				<% end %>
 			</div>
 			<div class="item">
 			<% if logged_in? %>
-					<%= link_to "log out", login_path, method: :delete , class: "ui primary button" %>
+					<%= link_to "log out", login_path, method: :delete , class: "ui black button" %>
 			<% else %>
-					<%= link_to "log in", login_path, class: "ui primary button" %>
+					<%= link_to "log in", login_path, class: "ui black button" %>
 			<% end %>
 			</div>
 		</div>

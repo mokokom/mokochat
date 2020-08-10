@@ -8,6 +8,7 @@
 	height: 92vh;
 	display: flex;
 	flex-direction: column;
+	background-color: $black;
 	// border-radius: 10px;
 
 	.message{
@@ -63,7 +64,19 @@
 	cursor: pointer;
 }
 
-#vertical-menu-container > div > div:nth-child(2),
-#vertical-menu-container > div > div:nth-child(3) {
-	max-width: 150px;
+#message_content{
+	background-color: $black;
+	border: 1px solid $secondary;
+	color: $secondary;
+}
+
+#submit-btn,
+.ui.menu .item,
+.ui.secondary.menu .dropdown.item:hover, .ui.secondary.menu .link.item:hover, .ui.secondary.menu a.item:hover {
+	color: $secondary;
+}
+
+#vertical-menu-container > div > div.ui.item.chatname {
+	display: flex;
+	justify-content: space-between;
 }

@@ -45,16 +45,18 @@
 	</div>
 </div>
 <div class="ui stackable two column grid">
-	<div class="four wide column" id="vertical-menu-container">
+	<div class="four wide column tablet computer only" id="vertical-menu-container">
 		<div class="ui secondary vertical menu">
 			<% if @chatroom.present? %>
 				<div class="ui item chatname">
 					<h2><%= @chatroom.name %>-chat</h2>
-					<a class="ui"><i class="edit alternate outline icon black modal-edit-btn"></i></a>
-					<%= link_to chatroom_path, class: "ui", method: :delete, data: {confirm: "are you sure?"} do %>
-					<i class="trash alternate outline icon black"></i>
-					<a class="ui"><i class="plus square outline icon black modal-create-btn"></i></a>
+					<div>
+						<a class="ui"><i class="edit alternate outline icon inverted modal-edit-btn"></i></a>
+						<%= link_to chatroom_path, class: "ui", method: :delete, data: {confirm: "are you sure?"} do %>
+						<i class="trash alternate outline icon inverted"></i>
+						<a class="ui"><i class="plus square outline icon inverted modal-create-btn"></i></a>
 					<% end %>
+					</div>
 				</div>
 			<% end %>
 			<div class="ui dropdown item">
