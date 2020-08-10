@@ -26,6 +26,7 @@ class UsersController < ApplicationController
 		user = User.new(user_params)
 		if params[:user][:password] == params[:user][:password_confirmation] && user.save 
 			flash[:success] = "You are account has been created with #{user.email}"
+			session[:user_id] = user.id
 			redirect_to chatrooms_path
 		else
 			user.valid?
