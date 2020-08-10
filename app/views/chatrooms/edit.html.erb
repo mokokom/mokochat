@@ -1,0 +1,15 @@
+<div class="content">
+	<%= form_with model: @chatroom, url: chatroom_path(@chatroom), class: "ui form", local: true do |f| %>
+		<%= f.text_field :name, placeholder: "name" %>
+		<div class="actions">
+			<%= f.button class: "ui green ok inverted button" do %>
+				<i class="checkmark icon"></i>
+				create 
+			<% end %>
+			<div class="ui red basic cancel inverted button">
+				<i class="remove icon"></i>
+				cancel
+			</div>
+		</div>
+	<% end %>
+</div>

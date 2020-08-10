@@ -1,0 +1,16 @@
+.ui.vertical.menu {
+	width: 100%;
+	margin: 0;
+}
+
+#vertical-menu-container{
+	padding-right: 0;
+}
+
+.test {
+	// width: 50%;
+	  display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}

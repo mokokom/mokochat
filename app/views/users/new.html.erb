@@ -1,0 +1,30 @@
+<%# <form class="ui form"> %>
+<%= form_with scope: :user, url: users_path, class: "ui form", local: true do |f| %>
+  <div class="field">
+    <%= f.label :username %>
+		<%= f.text_field :username %>
+  </div>
+  <div class="field">
+    <%= f.label :email %>
+		<%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :password %>
+		<%= f.password_field :password %>
+  </div>
+  <div class="field">
+    <%= f.label :password_confirmation %>
+		<%= f.password_field :password_confirmation %>
+  </div>
+  <div class="field">
+    <div class="ui checkbox">
+      <input type="checkbox" tabindex="0" class="hidden">
+      <%= f.check_box :tc %>
+      <%= f.label :tc, "I agree to the Terms and Conditions"%>
+      <%# <label>I agree to the Terms and Conditions</label> %>
+    </div>
+  </div>
+  <%# <button class="ui button" type="submit">Submit</button> %>
+	<%= f.submit "Register", class: "ui button" %>
+<%# </form> %>
+<% end %>

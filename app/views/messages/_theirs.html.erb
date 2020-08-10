@@ -1,0 +1,21 @@
+<div class="ui feed message">
+	<div class="content-container">
+		<div class="event">
+			<%# <div class="label">
+				<img src="/images/avatar/small/jenny.jpg">
+			</div> %>
+			<div class="content">
+				<div class="date">
+					<%= time_ago_in_words(message.created_at) %>
+				</div>
+				<div class="summary">
+						<em><%= message.content %></em>
+				</div>
+			</div>
+			<div class="author">
+				<%= message.user.username %>
+			</div>
+		</div>
+	</div>
+</div>
+

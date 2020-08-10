@@ -1,0 +1,25 @@
+<div class="ui three column centered grid">
+  <div class="column">
+    <%= form_with model: @user, class: "ui container form", local: true do |f| %>
+	<div class="field">
+    <%= f.label :username %>
+		<%= f.text_field :username %>
+  </div>
+  <div class="field">
+    <%= f.label :email %>
+		<%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :password %>
+		<%= f.password_field :password %>
+  </div>
+  <div class="field">
+    <%= f.label :password_confirmation %>
+		<%= f.password_field :password_confirmation %>
+  </div>
+  <%# <div class="right f"> %>
+	  <%= f.submit "Edit", class: "ui button right floated" %>
+  <%# </div> %>
+<% end %>
+  </div>
+</div>

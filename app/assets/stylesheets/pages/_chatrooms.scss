@@ -1,0 +1,64 @@
+// Place all the styles related to the chatrooms controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+// Place all the styles related to the chatroom controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+#feed-box {
+	height: 92vh;
+	display: flex;
+	flex-direction: column;
+	// border-radius: 10px;
+
+	.message{
+		min-height: 59px;
+		.content-container {
+			display: inline-block;
+			.content {
+				background-color: #eeeeee;
+				padding: 8px 16px;
+				border-radius: 20px;
+			}
+			.author {
+				margin-left: 10px;
+				font-size: 0.8rem;
+				color: #777777;
+			}
+		}
+		&.me {
+			.content-container {
+				display: flex;
+    		justify-content: flex-end;
+				.content {
+					background-color: #007bff;
+					color: white;
+				}
+			}
+		}
+	}
+}
+
+.actions {
+	margin-top: 30px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.chatname > h2 {
+	margin-bottom: 0;
+	margin-right: 10px;
+}
+
+.chatname > a.ui {
+	margin-left: 10px;
+}
+
+#vertical-menu-container > div > div.ui.item.chatname {
+	display: flex;
+	align-items: center;
+}
+
+.modal-edit-btn,
+.plus {
+	cursor: pointer;
+}

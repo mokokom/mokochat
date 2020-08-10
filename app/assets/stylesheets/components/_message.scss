@@ -1,0 +1,10 @@
+.ui.message {
+	box-shadow: none;
+	background-color: transparent;
+}
+
+#messages {
+	// height: 90%;
+	flex: 1 0 0;
+	overflow: auto;
+}

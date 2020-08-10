@@ -1,0 +1,15 @@
+#submit-btn {
+	background-color: transparent;
+	border: none;
+	border-radius: 0.28rem;
+	cursor: pointer;
+}
+
+.ui.modal .actions > .button {
+	margin-left: 0;
+}
+
+.ui.menu .ui.dropdown .menu > .active.item {
+	background-color: rgb(255, 174, 174) !important;
+	border-radius: none;
+}

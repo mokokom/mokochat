@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
 		if user && user.authenticate(params[:session][:password])
 			session[:user_id] = user.id
 			flash[:success] = "You have successfully logged in"
-			redirect_to chatroom_path(Chatroom.find(Chatroom.first.id))
+			redirect_to chatrooms_path
 		else
 			flash.now[:error] = "Wrong credential"
 			render :new

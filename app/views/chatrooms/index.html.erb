@@ -1,0 +1,114 @@
+<div id="user-id" data-user-id="<%= current_user.id  %>"></div>
+<div id="chatroom-id" data-chatroom-id="<%= @chatroom.try(:id) %>"></div>
+<% if @chatroom.present? %>
+<div class="ui basic mini modal edit">
+	<div class="ui icon header">
+		<i class="edit outline icon"></i>
+		Change chatroom name
+	</div>
+	<div class="content">
+		<%= form_with model: @chatroom, url: chatroom_path(@chatroom), class: "ui form", local: true do |f| %>
+			<%= f.text_field :name, placeholder: "name" %>
+			<div class="actions">
+				<%= f.button class: "ui green ok inverted button testt" do %>
+					<i class="checkmark icon"></i>
+					create 
+				<% end %>
+				<div class="ui red basic cancel inverted button">
+					<i class="remove icon"></i>
+					cancel
+				</div>
+			</div>
+		<% end %>
+	</div>
+</div>
+<% end %>
+<div class="ui basic mini modal create">
+	<div class="ui icon header">
+		<i class="comments outline icon"></i>
+		Create chatroom
+	</div>
+	<div class="content">
+		<%= form_with scope: :chatroom, url: chatrooms_path, class: "ui form", local: true do |f| %>
+			<%= f.text_field :name, value: "", placeholder: "name" %>
+			<div class="actions">
+				<%= f.button class: "ui green ok inverted button" do %>
+					<i class="checkmark icon"></i>
+					create 
+				<% end %>
+				<div class="ui red basic cancel inverted button">
+					<i class="remove icon"></i>
+					cancel
+				</div>
+			</div>
+		<% end %>
+	</div>
+</div>
+<div class="ui stackable two column grid">
+	<div class="four wide column" id="vertical-menu-container">
+		<div class="ui secondary vertical menu">
+			<% if @chatroom.present? %>
+				<div class="ui item chatname">
+					<h2><%= @chatroom.name %>-chat</h2>
+					<a class="ui"><i class="edit alternate outline icon black modal-edit-btn"></i></a>
+					<%= link_to chatroom_path, class: "ui", method: :delete, data: {confirm: "are you sure?"} do %>
+					<i class="trash alternate outline icon black"></i>
+					<a class="ui"><i class="plus square outline icon black modal-create-btn"></i></a>
+					<% end %>
+				</div>
+			<% end %>
+			<div class="ui dropdown item">
+				<i class="dropdown icon"></i>
+				<%= current_user.username %>
+				<div class="menu">
+					<div class="header">options</div>
+					<%= link_to "edit account", edit_user_path(current_user.id), class: "item" %>
+					<%= link_to "log out", login_path, class: "item", method: :delete %>
+				</div>
+			</div>
+			<div class="ui dropdown item">
+				<i class="dropdown icon"></i>
+				chatrooms
+				<div class="menu">
+					<%# <div class="header">chatrooms list</div> %>
+					<a class=" item ui black basic button modal-create-btn">
+							create chatroom
+					</a>
+					<% @chatrooms.each do |chatroom| %>
+						<% active_class = (@chatroom == chatroom) ? "active" : "" %>
+						<%= link_to chatroom_path(chatroom.id), class: "item #{active_class}" do %>
+							<%= "#{chatroom.name}-chat" %> <br> <small><%= chatroom.users.uniq.count %> members</small>
+						<%end%>
+					<% end %>
+				</div>
+			</div>
+		</div>
+	</div>
+	<% if @chatroom.present? %>
+		<div class="ui card twelve wide column" id="feed-box">
+			<div id="messages">
+				<% if @chatroom.messages.empty? %>
+					<div class="ui placeholder">
+						<div class="line"></div>
+						<div class="line"></div>
+						<div class="line"></div>
+						<div class="line"></div>
+						<div class="line"></div>
+						<div class="line"></div>
+						<div class="line"></div>
+						<div class="line"></div>
+						<div class="line"></div>
+						<div class="line"></div>
+					</div>
+				<% end %>
+				<%= render @chatroom.messages %>
+			</div>
+			<div class="extra content">
+				<%= form_with scope: :message, url: [@chatroom, Message.new], class: "ui fluid icon input", remote: true do |f| %>
+					<%= f.text_field :content, placeholder: "message"  %>
+					<%= f.button '<i class="angle up icon"></i>'.html_safe, id:"submit-btn" %>
+				<% end %>
+			</div>
+		</div>
+	<% end %>
+</div>

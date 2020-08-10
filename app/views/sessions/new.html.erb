@@ -1,0 +1,37 @@
+<%# <%= form_with scope: :session, url: users_path, class: , remote: true %> 
+<div class="ui placeholder segment">
+  <div class="ui two column very relaxed stackable grid">
+    <div class="column">
+			<%= form_with scope: :session, url: login_path, class: "ui form", local: true do |f|%> 
+        <div class="field">
+					<%= f.label :email %>
+          <div class="ui left icon input">
+						<%= f.text_field :email %>
+            <i class="user icon"></i>
+          </div>
+        </div>
+        <div class="field">
+          <%= f.label :password %>
+          <div class="ui left icon input">
+            <%= f.password_field :password %>
+            <i class="lock icon"></i>
+          </div>
+        </div>
+				<%= f.submit "Login", class: "ui blue submit button" %>
+			<% end %>
+    </div>
+    <div class="middle aligned column">
+      <%# <div class="ui big button">
+        <i class="signup icon"></i>
+        Sign Up
+      </div> %>
+			<%= link_to new_user_path, class: "ui big button" do %>
+			    <i class="signup icon"></i>
+        	Register
+			<% end %>
+    </div>
+  </div>
+  <div class="ui vertical divider">
+    Or
+  </div>
+</div>

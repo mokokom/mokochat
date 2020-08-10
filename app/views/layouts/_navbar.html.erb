@@ -1,0 +1,19 @@
+<div class="ui small inverted menu">
+	<%# <div class="ui container"> %>
+		<a href="/" class="item">
+			<i class="large circular comments outline icon"></i> Chatroom
+		</a>
+		<div class="right menu">
+			<div class="item">
+				<%= link_to current_user ? current_user.username : "register", chatrooms_path, class: "ui primary button" %>
+			</div>
+			<div class="item">
+			<% if logged_in? %>
+					<%= link_to "log out", login_path, method: :delete , class: "ui primary button" %>
+			<% else %>
+					<%= link_to "log in", login_path, class: "ui primary button" %>
+			<% end %>
+			</div>
+		</div>
+	<%# </div> %>
+</div>
