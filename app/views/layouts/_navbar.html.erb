@@ -5,7 +5,11 @@
 		</a>
 		<div class="right menu">
 			<div class="item">
-				<%= link_to current_user ? current_user.username : "register", chatrooms_path, class: "ui primary button" %>
+				<% if current_user %>
+					<%= link_to current_user.username, chatrooms_path, class: "ui primary button" %>
+				<% else %>
+					<%= link_to "register", new_user_path, class: "ui primary button" %>
+				<% end %>
 			</div>
 			<div class="item">
 			<% if logged_in? %>
