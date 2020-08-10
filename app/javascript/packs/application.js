@@ -16,3 +16,16 @@ require("semantic-ui-sass")
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
+import { toggleActive } from "./components/toggle-active"
+import { dropdown } from "./components/dropdown"
+import { closeMessage } from "./components/close-message"
+import { handleModal } from "./components/handle-modal"
+import { scrollDown } from "./components/scroll-down"
+
+$(document).on("turbolinks:load", ()=>{
+	toggleActive()
+	dropdown()
+	closeMessage()
+	handleModal()
+	scrollDown()
+})
