@@ -5,11 +5,14 @@
 		</a>
 		<div class="right menu">
 			<div class="ui dropdown item mobile only">
-      Language <i class="dropdown icon"></i>
+      chatrooms <i class="dropdown icon"></i>
       <div class="menu">
-        <a class="item">English</a>
-        <a class="item">Russian</a>
-        <a class="item">Spanish</a>
+					<% @chatrooms.each do |chatroom| %>
+						<% active_class = (@chatroom == chatroom) ? "active" : "" %>
+						<%= link_to chatroom_path(chatroom.id), class: "item #{active_class}" do %>
+							<%= "#{chatroom.name}-chat" %> <br> <small><%= chatroom.users.uniq.count %> members</small>
+						<%end%>
+					<% end %>
       </div>
     </div>
 			<div class="item">
