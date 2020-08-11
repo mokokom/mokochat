@@ -6,7 +6,10 @@
 			</div> %>
 			<div class="content">
 				<div class="summary">
-						<em><%= message.content %></em>
+				<% if message.user.photo.attached? %>
+					<%= cl_image_tag message.user.photo.key, height: 250, width: 250, crop: :fill, class: "ui avatar image", id: "nav-avatar" %>
+				<% end %>
+				<em><%= message.content %></em>
 				</div>
 			</div>
 			<div class="author">
