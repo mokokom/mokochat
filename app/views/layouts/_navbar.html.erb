@@ -29,6 +29,7 @@
 		<div class="right menu">
 				<% if logged_in? %>
 					<div class="ui dropdown item">
+							<%= cl_image_tag current_user.photo.key, height: 250, width: 250, crop: :fill, class: "ui mini circular image", id: "nav-avatar" %>
 							<%= current_user.username %> <i class="dropdown icon"></i>
 							<div class="menu">
 								<a class="ui modal-create-btn item">create chatroom</a>
