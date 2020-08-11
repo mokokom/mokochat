@@ -17,21 +17,21 @@
 				<i class="large circular comments outline icon"></i>chatrooms
 				</div>
 			<% end %>
+				<% if @chatroom.present? && @chatroom.created_by == current_user.id %>
 			<div class="ui dropdown item">
-				<% if @chatroom.present? %>
 					<%= @chatroom.name %>-chat <i class="dropdown icon"></i>
 					<div class="menu">
 						<a class="ui item modal-edit-btn">edit chatname</a>
 						<%= link_to "delete chatroom", chatroom_path, class: "ui item", method: :delete, data: {confirm: "are you sure?"}  %>
-						<a class="ui modal-create-btn item">create chatroom</a>
 					</div>
-				<% end %>
     	</div>
+				<% end %>
 		<div class="right menu">
 			<div class="ui dropdown item">
 				<% if logged_in? %>
 					<%= current_user.username %> <i class="dropdown icon"></i>
 					<div class="menu">
+						<a class="ui modal-create-btn item">create chatroom</a>
 						<%= link_to "edit account", edit_user_path(current_user.id), class: "item" %>
 						<%= link_to "log out", login_path, class: "item", method: :delete %>
 					</div>

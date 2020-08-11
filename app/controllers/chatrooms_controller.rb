@@ -20,6 +20,7 @@ class ChatroomsController < ApplicationController
 
 	def create
 		@chatroom = Chatroom.new(chatroom_params)
+		@chatroom.created_by = current_user.id if @chatroom.valid?
 		if @chatroom.save
 			flash[:success] = "Chatroom #{@chatroom.name} created"
 			redirect_to chatroom_path(@chatroom)
@@ -27,8 +28,9 @@ class ChatroomsController < ApplicationController
 	end
 	
 	def show
-		@chatroom = Chatroom.find(params[:id])
+		# @chatroom = Chatroom.find(params[:id])
 		@chatrooms = Chatroom.all
+		# session[:user_id] = nil
 		# byebug
 		if params[:id].nil?
 			@chatroom = Chatroom.find(2)
