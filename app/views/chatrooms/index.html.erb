@@ -48,20 +48,6 @@
 	<% if @chatroom.present? %>
 		<div class="ui card column" id="feed-box">
 			<div id="messages">
-				<% if @chatroom.messages.empty? %>
-					<div class="ui placeholder">
-						<div class="line"></div>
-						<div class="line"></div>
-						<div class="line"></div>
-						<div class="line"></div>
-						<div class="line"></div>
-						<div class="line"></div>
-						<div class="line"></div>
-						<div class="line"></div>
-						<div class="line"></div>
-						<div class="line"></div>
-					</div>
-				<% end %>
 				<%= render @chatroom.messages %>
 			</div>
 			<div class="extra content">

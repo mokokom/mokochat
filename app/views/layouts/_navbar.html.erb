@@ -2,7 +2,7 @@
 	<div class="ui container">
 			<% if logged_in? %>
 				<div class="ui dropdown item">
-				<i class="large circular comments outline icon"></i>chatrooms <i class="dropdown icon"></i>
+					<a href="/"><i class="large circular comments outline icon"></i>chatrooms <i class="dropdown icon"></i></a>
 					<div class="menu">
 						<% @chatrooms.each do |chatroom| %>
 							<% active_class = (@chatroom == chatroom) ? "active" : "" %>
@@ -14,7 +14,7 @@
 				</div>
 			<% else %>
 			<div class="ui dropdown item">
-				<i class="large circular comments outline icon"></i>chatrooms
+				<a href="/"><i class="large circular comments outline icon"></i>chatrooms </a>
 				</div>
 			<% end %>
 				<% if @chatroom.present? && @chatroom.created_by == current_user.id %>
@@ -37,6 +37,7 @@
 					</div>
 				<% else %>
 					<%= link_to "register", new_user_path, class: "ui black button" %>
+					<%= link_to "login", login_path, class: "ui black button" %>
 				<% end %>
     	</div>
 			

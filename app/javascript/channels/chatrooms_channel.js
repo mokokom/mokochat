@@ -30,8 +30,6 @@ $(document).on("turbolinks:load", ()=>{
       } else {
         html = data.theirs
       }
-      // console.log(data);
-      // console.log("tes");
       $("#messages").append(html);
       $("#message_content").val("");
       scrollDown()
