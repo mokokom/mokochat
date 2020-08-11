@@ -1,34 +1,45 @@
 <div class="ui small inverted menu">
-	<%# <div class="ui container"> %>
-		<a href="/" class="item">
-			<i class="large circular comments outline icon"></i> Chatroom
-		</a>
+	<div class="ui container">
+			<% if logged_in? %>
+				<div class="ui dropdown item">
+				<i class="large circular comments outline icon"></i>chatrooms <i class="dropdown icon"></i>
+					<div class="menu">
+						<% @chatrooms.each do |chatroom| %>
+							<% active_class = (@chatroom == chatroom) ? "active" : "" %>
+							<%= link_to chatroom_path(chatroom.id), class: "item #{active_class}" do %>
+								<%= "#{chatroom.name}-chat" %> <br> <small><%= chatroom.users.uniq.count %> members</small>
+							<%end%>
+						<% end %>
+					</div>
+				</div>
+			<% else %>
+			<div class="ui dropdown item">
+				<i class="large circular comments outline icon"></i>chatrooms
+				</div>
+			<% end %>
+			<div class="ui dropdown item">
+				<% if @chatroom.present? %>
+					<%= @chatroom.name %>-chat <i class="dropdown icon"></i>
+					<div class="menu">
+						<a class="ui item modal-edit-btn">edit chatname</a>
+						<%= link_to "delete chatroom", chatroom_path, class: "ui item", method: :delete, data: {confirm: "are you sure?"}  %>
+						<a class="ui modal-create-btn item">create chatroom</a>
+					</div>
+				<% end %>
+    	</div>
 		<div class="right menu">
-			<div class="ui dropdown item mobile only">
-      chatrooms <i class="dropdown icon"></i>
-      <div class="menu">
-					<% @chatrooms.each do |chatroom| %>
-						<% active_class = (@chatroom == chatroom) ? "active" : "" %>
-						<%= link_to chatroom_path(chatroom.id), class: "item #{active_class}" do %>
-							<%= "#{chatroom.name}-chat" %> <br> <small><%= chatroom.users.uniq.count %> members</small>
-						<%end%>
-					<% end %>
-      </div>
-    </div>
-			<div class="item">
-				<% if current_user %>
-					<%= link_to current_user.username, chatrooms_path, class: "ui black button" %>
+			<div class="ui dropdown item">
+				<% if logged_in? %>
+					<%= current_user.username %> <i class="dropdown icon"></i>
+					<div class="menu">
+						<%= link_to "edit account", edit_user_path(current_user.id), class: "item" %>
+						<%= link_to "log out", login_path, class: "item", method: :delete %>
+					</div>
 				<% else %>
 					<%= link_to "register", new_user_path, class: "ui black button" %>
 				<% end %>
-			</div>
-			<div class="item">
-			<% if logged_in? %>
-					<%= link_to "log out", login_path, method: :delete , class: "ui black button" %>
-			<% else %>
-					<%= link_to "log in", login_path, class: "ui black button" %>
-			<% end %>
-			</div>
+    	</div>
+			
 		</div>
-	<%# </div> %>
+	</div>
 </div>
