@@ -18,6 +18,8 @@ class UsersController < ApplicationController
 			flash[:success] = "You are account has been successfully edited"
 			redirect_to chatrooms_path
 		else
+			@user.valid?
+			flash.now[:error] = "#{@user.errors.full_messages}"
 			render :edit
 		end
 	end

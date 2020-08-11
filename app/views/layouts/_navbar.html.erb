@@ -4,12 +4,14 @@
 				<div class="ui dropdown item">
 					<a href="/"><i class="large circular comments outline icon"></i>chatrooms <i class="dropdown icon"></i></a>
 					<div class="menu">
+					<%if !@chatrooms.nil?%>
 						<% @chatrooms.each do |chatroom| %>
 							<% active_class = (@chatroom == chatroom) ? "active" : "" %>
 							<%= link_to chatroom_path(chatroom.id), class: "item #{active_class}" do %>
 								<%= "#{chatroom.name}-chat" %> <br> <small><%= chatroom.users.uniq.count %> members</small>
 							<%end%>
 						<% end %>
+					<%end%>
 					</div>
 				</div>
 			<% else %>
