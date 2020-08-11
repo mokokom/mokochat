@@ -47,6 +47,19 @@
 <div class="ui column grid">
 	<% if @chatroom.present? %>
 		<div class="ui card column" id="feed-box">
+			<h2>
+				<% if @chatroom.present? && @chatroom.created_by == current_user.id %>
+					<div class="ui dropdown item">
+						<i class="comments outline icon"></i> <%= @chatroom.name %>-chat <i class="dropdown icon"></i>
+						<div class="menu">
+							<a class="ui item modal-edit-btn">edit chatname</a>
+							<%= link_to "delete chatroom", chatroom_path, class: "ui item", method: :delete, data: {confirm: "are you sure?"}  %>
+						</div>
+					</div>
+				<% else %>
+					<i class="comments outline icon"></i> <%= @chatroom.name %>-chat 
+				<% end %>
+			</h2>
 			<div id="messages">
 				<%= render @chatroom.messages %>
 			</div>

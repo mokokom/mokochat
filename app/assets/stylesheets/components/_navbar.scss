@@ -5,3 +5,7 @@
 body > div.ui.small.inverted.menu {
 	border-bottom: 1px solid $secondary;
 }
+
+.ui.inverted.menu .item:before {
+	background-color: inherit;
+}

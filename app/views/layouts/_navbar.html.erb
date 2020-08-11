@@ -2,32 +2,21 @@
 	<div class="ui container">
 			<% if logged_in? %>
 				<div class="ui dropdown item">
-					<a href="/"><i class="large circular comments outline icon"></i>chatrooms <i class="dropdown icon"></i></a>
+					<a href="/"><i class="large comments outline icon"></i>chatrooms <i class="dropdown icon"></i></a>
 					<div class="menu">
-					
 						<% @chatrooms.each do |chatroom| %>
 							<% active_class = (@chatroom == chatroom) ? "active" : "" %>
 							<%= link_to chatroom_path(chatroom.id), class: "item #{active_class}" do %>
 								<%= "#{chatroom.name}-chat" %> <br> <small><%= chatroom.users.uniq.count %> members</small>
 							<%end%>
 						<% end %>
-					
 					</div>
 				</div>
 			<% else %>
 			<div class="ui dropdown item">
-				<a href="/"><i class="large circular comments outline icon"></i>chatrooms </a>
-				</div>
+				<a href="/"><i class="large comments outline icon"></i>chatrooms </a>
+			</div>
 			<% end %>
-				<% if @chatroom.present? && @chatroom.created_by == current_user.id %>
-			<div class="ui dropdown item">
-					<%= @chatroom.name %>-chat <i class="dropdown icon"></i>
-					<div class="menu">
-						<a class="ui item modal-edit-btn">edit chatname</a>
-						<%= link_to "delete chatroom", chatroom_path, class: "ui item", method: :delete, data: {confirm: "are you sure?"}  %>
-					</div>
-    	</div>
-				<% end %>
 		<div class="right menu">
 				<% if logged_in? %>
 					<div class="ui dropdown item">
