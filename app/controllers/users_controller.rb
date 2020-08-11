@@ -9,6 +9,7 @@ class UsersController < ApplicationController
 
 	def edit
 	# byebug
+		@chatrooms = Chatroom.all
 		# @user = User.find(params[:id])
 	end
 
